@@ -1,7 +1,12 @@
 import React from "react";
+import Input from "../components/Input";
 
-const Todo = () => {
-  return <div>Todo</div>;
+const Todo: React.FC = () => {
+  return (
+    <>
+      <Input />
+    </>
+  );
 };
 
 export default Todo;
