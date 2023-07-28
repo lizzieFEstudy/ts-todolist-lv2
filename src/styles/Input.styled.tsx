@@ -31,7 +31,6 @@ export const InputButton = styled.button`
   border: 0;
   border-radius: 6px;
   padding: 0 16px;
-  /* background: #203a91; */
-  background: #005955;
+  background: #203a91;
   color: #fff;
 `;

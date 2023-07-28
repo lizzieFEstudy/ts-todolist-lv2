@@ -10,7 +10,7 @@ export const TodoListList = styled.ul`
   flex-wrap: wrap;
   gap: 20px 2%;
 `;
-export const TodoListItem = styled.li`
+export const TodoListItem = styled.li<{ $IsDone: boolean }>`
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
@@ -21,10 +21,11 @@ export const TodoListItem = styled.li`
   margin-bottom: 10px;
   padding: 30px 24px 94px;
   border: 3px solid #203a91;
-  border: 3px solid #005955;
   border-radius: 16px;
   box-shadow: 0 8px 15px rgba(11, 51, 82, 0.2);
-  // IsDone 관련 CSS 추가 예정
+  ${({ $IsDone }) =>
+    $IsDone &&
+    `box-shadow: none; border-color: #eaebed; border-color: #dbdde1;`}
 `;
 export const TodoListStrong = styled.strong`
   display: block;
@@ -46,7 +47,7 @@ export const TodoListBox = styled.div`
   border-radius: 0 0 10px 10px;
   overflow: hidden;
 `;
-export const TodoListButton = styled.button`
+export const TodoListButton = styled.button<{ $IsDone?: boolean }>`
   float: left;
   min-width: 50%;
   height: 54px;
@@ -55,5 +56,10 @@ export const TodoListButton = styled.button`
   box-sizing: border-box;
   border: 0;
   background: #f2f2f2;
-  // IsDone 관련 CSS 추가 예정
+  ${({ $IsDone }) =>
+    $IsDone === undefined
+      ? null
+      : !$IsDone
+      ? `color: #fff; background: #203a91;`
+      : `background: #fbb938;`}
 `;
