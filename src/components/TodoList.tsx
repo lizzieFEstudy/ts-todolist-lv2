@@ -9,6 +9,19 @@ type OwnProps = {
 };
 
 const TodoList: React.FC<OwnProps> = ({ todos, setTodos, listIsDone }) => {
+  const clickDoneButtonHandler = (id: string) => {
+    const updatedTodos = (initialTodos: TodoModel[]) => {
+      return initialTodos.map(item => {
+        if (item.id === id) {
+          return { ...item, isDone: !item.isDone };
+        }
+        return item;
+      });
+    };
+
+    setTodos(updatedTodos);
+  };
+
   return (
     <section>
       <S.TodoListH2>{listIsDone ? "Done..! 🎉" : "Working.. 🔥"}</S.TodoListH2>
@@ -28,7 +41,7 @@ const TodoList: React.FC<OwnProps> = ({ todos, setTodos, listIsDone }) => {
                   </S.TodoListButton>
                   <S.TodoListButton
                     $IsDone={item.isDone}
-                    // onClick={() => clickDoneButtonHandler(item.id)}
+                    onClick={() => clickDoneButtonHandler(item.id)}
                   >
                     {item.isDone === false ? "완료" : "취소"}
                   </S.TodoListButton>
