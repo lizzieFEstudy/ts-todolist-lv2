@@ -22,6 +22,11 @@ const TodoList: React.FC<OwnProps> = ({ todos, setTodos, listIsDone }) => {
     setTodos(updatedTodos);
   };
 
+  const clickRemoveButtonHandler = (id: string) => {
+    const deletedTodos = todos.filter(item => item.id !== id);
+    setTodos(deletedTodos);
+  };
+
   return (
     <section>
       <S.TodoListH2>{listIsDone ? "Done..! 🎉" : "Working.. 🔥"}</S.TodoListH2>
@@ -35,7 +40,7 @@ const TodoList: React.FC<OwnProps> = ({ todos, setTodos, listIsDone }) => {
                 <p>{item.contents}</p>
                 <S.TodoListBox>
                   <S.TodoListButton
-                  // onClick={() => clickRemoveButtonHandler(item.id)}
+                    onClick={() => clickRemoveButtonHandler(item.id)}
                   >
                     삭제하기
                   </S.TodoListButton>

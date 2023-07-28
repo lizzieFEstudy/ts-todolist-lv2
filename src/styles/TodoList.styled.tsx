@@ -61,5 +61,5 @@ export const TodoListButton = styled.button<{ $IsDone?: boolean }>`
       ? null
       : !$IsDone
       ? `color: #fff; background: #203a91;`
-      : `background: #fbb938;`}
+      : `color: #fff; background: #b3bcda;`}
 `;
