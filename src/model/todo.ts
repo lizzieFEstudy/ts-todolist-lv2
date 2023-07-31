@@ -4,3 +4,5 @@ export type TodoModel = {
   contents: string;
   isDone: boolean;
 };
+
+export type UpdateTodoModel = Pick<TodoModel, "title" | "contents">;

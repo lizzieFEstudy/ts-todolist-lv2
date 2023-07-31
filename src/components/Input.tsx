@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import * as S from "../styles/Input.styled";
-import { TodoModel } from "../model/todo";
-import { v4 as uuid } from "uuid";
+import { useAppDispatch } from "../redux/config/hooks";
+import { addTodo } from "../redux/modules/todosSlice";
 
-type OwnProps = {
-  todos: TodoModel[];
-  setTodos: React.Dispatch<React.SetStateAction<TodoModel[]>>;
-};
+const Input: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-const Input: React.FC<OwnProps> = ({ todos, setTodos }) => {
   let [title, setTitle] = useState("");
   let [contents, setContents] = useState("");
 
@@ -25,13 +22,11 @@ const Input: React.FC<OwnProps> = ({ todos, setTodos }) => {
     if (!title) return window.alert("제목을 입력해주세요");
 
     let newTodos = {
-      id: uuid(),
       title,
-      contents,
-      isDone: false
+      contents
     };
 
-    setTodos([...todos, newTodos]);
+    dispatch(addTodo(newTodos));
 
     setTitle("");
     setContents("");

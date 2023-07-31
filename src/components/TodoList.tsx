@@ -1,37 +1,30 @@
 import React from "react";
-import { TodoModel } from "../model/todo";
 import * as S from "../styles/TodoList.styled";
+import { useAppDispatch, useAppSelector } from "../redux/config/hooks";
+import { deleteTodo, toggleStatusTodo } from "../redux/modules/todosSlice";
 
 type OwnProps = {
-  todos: TodoModel[];
-  setTodos: React.Dispatch<React.SetStateAction<TodoModel[]>>;
   listIsDone: boolean;
 };
 
-const TodoList: React.FC<OwnProps> = ({ todos, setTodos, listIsDone }) => {
-  const clickDoneButtonHandler = (id: string) => {
-    const updatedTodos = (initialTodos: TodoModel[]) => {
-      return initialTodos.map(item => {
-        if (item.id === id) {
-          return { ...item, isDone: !item.isDone };
-        }
-        return item;
-      });
-    };
+const TodoList: React.FC<OwnProps> = ({ listIsDone }) => {
+  const dispatch = useAppDispatch();
 
-    setTodos(updatedTodos);
+  const todosData = useAppSelector(state => state.todos.todos);
+
+  const clickDoneButtonHandler = (id: string) => {
+    dispatch(toggleStatusTodo(id));
   };
 
   const clickRemoveButtonHandler = (id: string) => {
-    const deletedTodos = todos.filter(item => item.id !== id);
-    setTodos(deletedTodos);
+    dispatch(deleteTodo(id));
   };
 
   return (
     <section>
       <S.TodoListH2>{listIsDone ? "Done..! 🎉" : "Working.. 🔥"}</S.TodoListH2>
       <S.TodoListList>
-        {todos
+        {todosData
           .filter(item => item.isDone === listIsDone)
           .map(item => {
             return (
