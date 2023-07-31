@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "../styles/TodoList.styled";
 import { useAppDispatch, useAppSelector } from "../redux/config/hooks";
 import { deleteTodo, toggleStatusTodo } from "../redux/modules/todosSlice";
+import { Link } from "react-router-dom";
 
 type OwnProps = {
   listIsDone: boolean;
@@ -29,8 +30,9 @@ const TodoList: React.FC<OwnProps> = ({ listIsDone }) => {
           .map(item => {
             return (
               <S.TodoListItem $IsDone={item.isDone} key={item.id}>
-                <strong>{item.title}</strong>
-                <p>{item.contents}</p>
+                <S.TodoListStrong>{item.title}</S.TodoListStrong>
+                <S.TodoListParagraph>{item.contents}</S.TodoListParagraph>
+                <Link to={`/detail/${item.id}`}>상세보기</Link>
                 <S.TodoListBox>
                   <S.TodoListButton
                     onClick={() => clickRemoveButtonHandler(item.id)}
