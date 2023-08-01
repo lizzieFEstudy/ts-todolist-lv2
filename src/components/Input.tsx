@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "../styles/Input.styled";
 import { useAppDispatch } from "../redux/config/hooks";
-import { addTodo } from "../redux/modules/todosSlice";
+import { __addTodo } from "../redux/modules/todosSlice";
 
 const Input: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ const Input: React.FC = () => {
       contents
     };
 
-    dispatch(addTodo(newTodos));
+    dispatch(__addTodo(newTodos));
 
     setTitle("");
     setContents("");

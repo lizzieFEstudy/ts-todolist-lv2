@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "../styles/TodoList.styled";
 import { useAppDispatch, useAppSelector } from "../redux/config/hooks";
-import { deleteTodo, toggleStatusTodo } from "../redux/modules/todosSlice";
 import { Link } from "react-router-dom";
+import { __deleteTodo, __toggleStatusTodo } from "../redux/modules/todosSlice";
 
 type OwnProps = {
   listIsDone: boolean;
@@ -13,12 +13,12 @@ const TodoList: React.FC<OwnProps> = ({ listIsDone }) => {
 
   const todosData = useAppSelector(state => state.todos.todos);
 
-  const clickDoneButtonHandler = (id: string) => {
-    dispatch(toggleStatusTodo(id));
+  const clickDoneButtonHandler = (id: string, isDone: boolean) => {
+    dispatch(__toggleStatusTodo({ id, isDone }));
   };
 
   const clickRemoveButtonHandler = (id: string) => {
-    dispatch(deleteTodo(id));
+    dispatch(__deleteTodo(id));
   };
 
   return (
@@ -41,7 +41,7 @@ const TodoList: React.FC<OwnProps> = ({ listIsDone }) => {
                   </S.TodoListButton>
                   <S.TodoListButton
                     $IsDone={item.isDone}
-                    onClick={() => clickDoneButtonHandler(item.id)}
+                    onClick={() => clickDoneButtonHandler(item.id, item.isDone)}
                   >
                     {item.isDone === false ? "완료" : "취소"}
                   </S.TodoListButton>

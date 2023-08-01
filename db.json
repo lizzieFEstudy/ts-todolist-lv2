@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "리액트 공부하기✏️",
+      "contents": "리액트를 공부해봅시다.",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "title": "폰 게임 30분만 하기🎲",
+      "contents": "하루 30분 초과 금지",
+      "isDone": true
+    },
+    {
+      "title": "ㅇㄹㄹㅇㅇ",
+      "contents": "ㄹㄹㅇㅇ",
+      "isDone": false,
+      "id": 3
+    },
+    {
+      "title": "dd",
+      "contents": "dd",
+      "isDone": false,
+      "id": 4
+    },
+    {
+      "title": "dd",
+      "contents": "d",
+      "isDone": false,
+      "id": 5
+    }
+  ]
+}
