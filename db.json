@@ -13,20 +13,20 @@
       "isDone": true
     },
     {
-      "title": "ㅇㄹㄹㅇㅇ",
-      "contents": "ㄹㄹㅇㅇ",
+      "title": "리덕스 적용하기",
+      "contents": "리덕스 청크",
       "isDone": false,
       "id": 3
     },
     {
-      "title": "dd",
-      "contents": "dd",
-      "isDone": false,
+      "title": "타입스크립트 적용하기",
+      "contents": "타입스크립트",
+      "isDone": true,
       "id": 4
     },
     {
-      "title": "dd",
-      "contents": "d",
+      "title": "AWS 강의듣기",
+      "contents": "AWS 강의 3개",
       "isDone": false,
       "id": 5
     }

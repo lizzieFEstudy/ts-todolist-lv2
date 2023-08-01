@@ -4,9 +4,9 @@ import { useAppDispatch, useAppSelector } from "../redux/config/hooks";
 import { Link } from "react-router-dom";
 import { __deleteTodo, __toggleStatusTodo } from "../redux/modules/todosSlice";
 
-type OwnProps = {
+interface OwnProps {
   listIsDone: boolean;
-};
+}
 
 const TodoList: React.FC<OwnProps> = ({ listIsDone }) => {
   const dispatch = useAppDispatch();
